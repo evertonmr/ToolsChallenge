@@ -4,6 +4,8 @@
 - Adiciona Swagger
 - Adiciona MapStruct
 - Adiciona serviço para realizar pagamentos
+- Adiciona tratamento para exceptions
+- Adiciona serviço de consulta de pagamentos
 
 ## 0.0.1
 - Versão inicial

@@ -24,7 +24,7 @@ public class RealizaPagamentoService {
     private final ComunicaPagamentoRequestMapStruct requestMapStruct;
     private final PagamentoResponseMapStruct responseMapStruct;
 
-    public PagamentoResponse pagamento(final PagamentoRequest request) {
+    public PagamentoResponse pagar(final PagamentoRequest request) {
         log.info("Realizando pagamento para requisição: {}", request);
 
         final var comunicaPagamentoResponse = integration.comunicaPagamento(requestMapStruct.apply(request));
