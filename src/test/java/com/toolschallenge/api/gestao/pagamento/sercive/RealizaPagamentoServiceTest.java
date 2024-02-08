@@ -1,6 +1,5 @@
 package com.toolschallenge.api.gestao.pagamento.sercive;
 
-import static java.util.concurrent.ThreadLocalRandom.current;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mapstruct.factory.Mappers.getMapper;
@@ -63,7 +62,7 @@ public class RealizaPagamentoServiceTest {
         when(integration.comunicaPagamento(any())).thenReturn(integrationResponse);
         when(repository.save(any())).thenReturn(entity);
 
-        final PagamentoResponse resultado = service.pagamento(request);
+        final PagamentoResponse resultado = service.pagar(request);
 
         verify(integration).comunicaPagamento(any());
         verify(requestMapStruct).apply(any());
