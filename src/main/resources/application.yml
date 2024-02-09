@@ -1,10 +1,7 @@
 logging:
   level:
     web: DEBUG
-#    org.springframework.boot: DEBUG
-#    org.springframework.orm.jpa: DEBUG
-#    org.springframework.transaction.interceptor: DEBUG
-#
+
 server:
   error:
     include-message: always
@@ -29,4 +26,4 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop

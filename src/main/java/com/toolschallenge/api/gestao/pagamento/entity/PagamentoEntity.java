@@ -6,9 +6,10 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.toolschallenge.api.gestao.pagamento.domain.enuns.StatusPagamento;
-import com.toolschallenge.api.gestao.pagamento.domain.enuns.TipoPagamento;
+import com.toolschallenge.api.gestao.pagamento.domain.enums.StatusPagamento;
+import com.toolschallenge.api.gestao.pagamento.domain.enums.TipoPagamento;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -33,6 +34,9 @@ public class PagamentoEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+
+    @Column(unique = true)
+    private String idTransacao;
 
     private String cartao;
 

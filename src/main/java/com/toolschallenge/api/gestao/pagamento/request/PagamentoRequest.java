@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.toolschallenge.api.gestao.pagamento.domain.enuns.TipoPagamento;
+import com.toolschallenge.api.gestao.pagamento.domain.enums.TipoPagamento;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
@@ -42,6 +42,9 @@ public final class PagamentoRequest implements Serializable {
 
         @NotBlank
         private String cartao;
+
+        @NotNull
+        private String id;
 
         @Valid
         private Descricao descricao;

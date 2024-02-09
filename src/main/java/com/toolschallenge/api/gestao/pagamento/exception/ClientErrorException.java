@@ -1,7 +1,7 @@
 package com.toolschallenge.api.gestao.pagamento.exception;
 
 
-import com.toolschallenge.api.gestao.pagamento.domain.enuns.ErrorType;
+import com.toolschallenge.api.gestao.pagamento.domain.enums.ErrorType;
 
 public class ClientErrorException extends AbstractErrorException {
 
@@ -11,11 +11,6 @@ public class ClientErrorException extends AbstractErrorException {
 
     public ClientErrorException(ErrorType errorType, String msg) {
         super(msg);
-        this.errorType = errorType;
-    }
-
-    public ClientErrorException(ErrorType errorType, String msg, final Throwable th) {
-        super(msg, th);
         this.errorType = errorType;
     }
 

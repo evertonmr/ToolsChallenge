@@ -1,4 +1,4 @@
-package com.toolschallenge.api.gestao.pagamento.domain.enuns;
+package com.toolschallenge.api.gestao.pagamento.domain.enums;
 
 import org.springframework.http.HttpStatus;
 

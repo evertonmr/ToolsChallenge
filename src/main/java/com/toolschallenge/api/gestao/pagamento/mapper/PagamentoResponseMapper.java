@@ -8,10 +8,10 @@ import com.toolschallenge.api.gestao.pagamento.entity.PagamentoEntity;
 import com.toolschallenge.api.gestao.pagamento.response.PagamentoResponse;
 
 @Mapper(componentModel = "spring")
-public interface PagamentoResponseMapStruct {
+public interface PagamentoResponseMapper {
 
     @Mappings({
-        @Mapping(target = "transacao.id", source = "id"),
+        @Mapping(target = "transacao.id", source = "idTransacao"),
         @Mapping(target = "transacao.cartao", source = "cartao"),
         @Mapping(target = "transacao.descricao.valor", source = "valor"),
         @Mapping(target = "transacao.descricao.dataHora", source = "dataHora"),
