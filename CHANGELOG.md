@@ -6,6 +6,7 @@
 - Adiciona serviço para realizar pagamentos
 - Adiciona tratamento para exceptions
 - Adiciona serviço de consulta de pagamentos
+- Adiciona serviço de estorno
 
 ## 0.0.1
 - Versão inicial

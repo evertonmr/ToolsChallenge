@@ -1,20 +1,14 @@
 # Tools Java Challenge
 Este é um projeto criado como desafio para o processo seletivo da Tools, empresa parceira da A.R. Phoenix.
 
-<h4 align="center"> 
-	🚧  Em Andamento  🚧
-</h4>
-
 ## Funcionalidades
-- [ ] Pagamento
-- [ ] Estorno de pagamento
-- [ ] Consulta de pagamentos
+- [X] Pagamento
+- [X] Estorno de pagamento
+- [X] Consulta de pagamentos
 
-## Pré-requisitos
+## Instruções
 - Para acessar o console do H2, utilize o caminho: http://localhost:8080/h2 e, no campo `JDBC URL:` informe o valor `jdbc:h2:~/toolschallenge-h2-db`
-
-## 🛠 Tecnologias
-- [Spring boot](https://spring.io/projects/spring-boot)
+- Para acessar o Swagger da API, utlize o caminho: http://localhost:8080/swagger-ui.html
 
 ## Autor
 

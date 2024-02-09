@@ -1,27 +1,33 @@
 package com.toolschallenge.api.gestao.pagamento.integration.processadora;
 
-import static com.toolschallenge.api.gestao.pagamento.util.RandomCollectionUtils.pickRandom;
+import static com.toolschallenge.api.gestao.pagamento.domain.enums.StatusPagamento.CANCELADO;
+import static com.toolschallenge.api.gestao.pagamento.integration.processadora.util.RandomCollectionUtils.pickRandomExcept;
 import static java.util.concurrent.ThreadLocalRandom.current;
+
+import java.util.EnumSet;
 
 import org.springframework.stereotype.Component;
 
-import com.toolschallenge.api.gestao.pagamento.integration.processadora.request.ComunicaPagamentoIntegrationRequest;
-import com.toolschallenge.api.gestao.pagamento.integration.processadora.response.ComunicaPagamentoIntegrationResponse;
-import com.toolschallenge.api.gestao.pagamento.domain.enuns.StatusPagamento;
+import com.toolschallenge.api.gestao.pagamento.domain.enums.StatusPagamento;
+import com.toolschallenge.api.gestao.pagamento.service.processadora.ProcessadoraPagamento;
+import com.toolschallenge.api.gestao.pagamento.service.processadora.ProcessadoraPagamentoRequest;
+import com.toolschallenge.api.gestao.pagamento.service.processadora.ProcessadoraPagamentoResponse;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Component
-public class PagamentoIntegration {
+class PagamentoIntegration implements ProcessadoraPagamento {
 
-    public ComunicaPagamentoIntegrationResponse comunicaPagamento(final ComunicaPagamentoIntegrationRequest request) {
+    public ProcessadoraPagamentoResponse comunicaPagamento(final ProcessadoraPagamentoRequest request) {
         log.info("Realizando comunicação do pagamento: {}", request);
+
+        EnumSet.complementOf(EnumSet.of(CANCELADO));
 
         return ComunicaPagamentoIntegrationResponse.builder()
             .nsu(current().nextLong())
             .codigoAutorizacao(current().nextLong())
-            .status(pickRandom(StatusPagamento.values()))
+            .status(pickRandomExcept(StatusPagamento.values(), CANCELADO))
             .build();
     }
 

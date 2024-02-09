@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 
-import com.toolschallenge.api.gestao.pagamento.domain.enuns.ErrorType;
+import com.toolschallenge.api.gestao.pagamento.domain.enums.ErrorType;
 
 import lombok.Getter;
 

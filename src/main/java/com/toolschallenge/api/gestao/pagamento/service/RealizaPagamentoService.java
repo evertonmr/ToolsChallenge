@@ -1,16 +1,17 @@
-package com.toolschallenge.api.gestao.pagamento.sercive;
+package com.toolschallenge.api.gestao.pagamento.service;
 
 import org.springframework.stereotype.Service;
 
-import com.toolschallenge.api.gestao.pagamento.integration.processadora.PagamentoIntegration;
-import com.toolschallenge.api.gestao.pagamento.integration.processadora.mapper.ComunicaPagamentoRequestMapStruct;
-import com.toolschallenge.api.gestao.pagamento.integration.processadora.response.ComunicaPagamentoIntegrationResponse;
-import com.toolschallenge.api.gestao.pagamento.mapper.PagamentoResponseMapStruct;
+import com.toolschallenge.api.gestao.pagamento.mapper.ComunicaPagamentoRequestMapper;
+import com.toolschallenge.api.gestao.pagamento.mapper.PagamentoResponseMapper;
 import com.toolschallenge.api.gestao.pagamento.entity.PagamentoEntity;
 import com.toolschallenge.api.gestao.pagamento.repository.PagamentoRepository;
 import com.toolschallenge.api.gestao.pagamento.request.PagamentoRequest;
 import com.toolschallenge.api.gestao.pagamento.response.PagamentoResponse;
+import com.toolschallenge.api.gestao.pagamento.service.processadora.ProcessadoraPagamento;
+import com.toolschallenge.api.gestao.pagamento.service.processadora.ProcessadoraPagamentoResponse;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,23 +21,25 @@ import lombok.extern.slf4j.Slf4j;
 public class RealizaPagamentoService {
 
     private final PagamentoRepository repository;
-    private final PagamentoIntegration integration;
-    private final ComunicaPagamentoRequestMapStruct requestMapStruct;
-    private final PagamentoResponseMapStruct responseMapStruct;
+    private final ProcessadoraPagamento integration;
+    private final ComunicaPagamentoRequestMapper requestMapper;
+    private final PagamentoResponseMapper responseMapper;
 
+    @Transactional
     public PagamentoResponse pagar(final PagamentoRequest request) {
         log.info("Realizando pagamento para requisição: {}", request);
 
-        final var comunicaPagamentoResponse = integration.comunicaPagamento(requestMapStruct.apply(request));
+        final var comunicaPagamentoResponse = integration.comunicaPagamento(requestMapper.apply(request));
 
         final var entity = registraPagamento(request, comunicaPagamentoResponse);
 
-        return responseMapStruct.apply(entity);
+        return responseMapper.apply(entity);
     }
 
     private PagamentoEntity registraPagamento(final PagamentoRequest request,
-        final ComunicaPagamentoIntegrationResponse comunicaPagamentoResponse) {
+        final ProcessadoraPagamentoResponse comunicaPagamentoResponse) {
         final var entity = new PagamentoEntity();
+        entity.setIdTransacao(request.getTransacao().getId());
         entity.setCartao(request.getTransacao().getCartao());
         entity.setValor(request.getTransacao().getDescricao().getValor());
         entity.setDataHora(request.getTransacao().getDescricao().getDataHora());

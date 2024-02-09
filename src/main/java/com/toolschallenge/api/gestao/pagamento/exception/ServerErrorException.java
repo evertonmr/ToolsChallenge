@@ -1,7 +1,7 @@
 package com.toolschallenge.api.gestao.pagamento.exception;
 
 
-import com.toolschallenge.api.gestao.pagamento.domain.enuns.ErrorType;
+import com.toolschallenge.api.gestao.pagamento.domain.enums.ErrorType;
 
 public class ServerErrorException extends AbstractErrorException {
 

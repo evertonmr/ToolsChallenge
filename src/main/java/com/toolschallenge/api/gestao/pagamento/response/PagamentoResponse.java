@@ -7,14 +7,14 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.toolschallenge.api.gestao.pagamento.domain.enuns.StatusPagamento;
-import com.toolschallenge.api.gestao.pagamento.domain.enuns.TipoPagamento;
+import com.toolschallenge.api.gestao.pagamento.domain.enums.StatusPagamento;
+import com.toolschallenge.api.gestao.pagamento.domain.enums.TipoPagamento;
 
 import lombok.Builder;
 import lombok.Getter;
 
 @Getter
-@Builder
+@Builder(toBuilder = true)
 public final class PagamentoResponse implements Serializable {
 
     @Serial
@@ -23,13 +23,13 @@ public final class PagamentoResponse implements Serializable {
     private final Transacao transacao;
 
     @Getter
-    @Builder
+    @Builder(toBuilder = true)
     public static final class Transacao implements Serializable {
 
         @Serial
         private static final long serialVersionUID = -6839904594520282354L;
 
-        private final Long id;
+        private final String id;
         private final String cartao;
         private final Descricao descricao;
         private final StatusPagamento status;

@@ -5,7 +5,7 @@ import static org.apache.commons.lang3.BooleanUtils.negate;
 import java.io.Serializable;
 import java.util.Map;
 
-import com.toolschallenge.api.gestao.pagamento.domain.enuns.ErrorType;
+import com.toolschallenge.api.gestao.pagamento.domain.enums.ErrorType;
 
 import lombok.Builder;
 import lombok.Data;
