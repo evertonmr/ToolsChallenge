@@ -1,10 +1,10 @@
-package com.toolschallenge.toolschallenge;
+package com.toolschallenge.api.gestao.pagamento;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ToolschallengeApplicationTests {
+class ApiGestaoPagamentoTests {
 
 	@Test
 	void contextLoads() {
