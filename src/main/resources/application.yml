@@ -1,9 +1,19 @@
+logging:
+  level:
+    web: DEBUG
+
 server:
   error:
     include-message: always
     include-binding-errors: always
 
 spring:
+  jackson:
+    deserialization:
+      READ_UNKNOWN_ENUM_VALUES_AS_NULL: true
+    generator:
+      IGNORE_UNKNOWN: true
+    time-zone: America/Sao_Paulo
   h2:
     console:
       enabled: true
@@ -16,4 +26,4 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
